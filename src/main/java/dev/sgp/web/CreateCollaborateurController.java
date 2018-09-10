@@ -2,6 +2,7 @@ package dev.sgp.web;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class CreateCollaborateurController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		
-		this.getServletContext().getRequestDispatcher(VUE).forward(req, resp);
+		req.getRequestDispatcher(VUE).forward(req, resp);
 		
 	}
 	
@@ -84,7 +85,6 @@ public class CreateCollaborateurController extends HttpServlet {
 			collaborateur.setNumSecuSocial(numSecuSocial);
 			collaborateur.setCreation(dateHeureCreation);
 			collaborateur.setEmailPro(emailPro);
-			collaborateur.setPhoto("../assets/images/avatar.jpg");
 			collaborateur.setActif(actif);
 			collaborateur.setMatricule(matricule);
 			

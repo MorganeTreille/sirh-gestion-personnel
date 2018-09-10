@@ -1,7 +1,8 @@
 <%@ page import="java.util.List"%>
 <%@ page import="dev.sgp.entite.*"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE>
 <html>
 	<head>
@@ -33,22 +34,18 @@
 			</select>
 		</div>
 		<ul>
-		<%
-		List<Collaborateur> listeCollab = (List<Collaborateur>)request.getAttribute("listeCollab");
-		for(Collaborateur c : listeCollab) {
-		%>
-		<img src="../assets/images/avatar.jpg">
-		<li><%=c.getNom() %></li>
-		<li><%=c.getPrenom() %></li>
-		<li><%=c.getDateNaissance() %></li>
-		<li><%=c.getAdresse() %></li>
-		<li><%=c.getEmailPro() %></li>
-		<li><%=c.getNumSecuSocial() %></li>
-		<li><%=c.getMatricule() %></li>
-		<li><%=c.getCreation() %></li>
-		<%
-		}
-		%>
+		
+		<c:forEach var="c" items="${listeCollab}">
+			<img src="../assets/images/avatar.jpg">
+			<li>${c.nom}</li>
+			<li>${c.prenom}</li>
+			<li>${c.dateNaissance}</li>
+			<li>${c.adresse}</li>
+			<li>${c.emailPro}</li>
+			<li>${c.numSecuSocial}</li>
+			<li>${c.matricule}</li>
+			<li>${c.creation}</li>
+		</c:forEach>
 		</ul>
 	</body>
 </html>
