@@ -1,19 +1,51 @@
 <%@ page import="java.util.List"%>
+<%@ page import="dev.sgp.entite.*"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>SGP - App</title>
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/bootstrap-3.3.7-
+		dist/css/bootstrap.css">
 	</head>
 	<body>
 		<h1>Les collaborateurs</h1>
+		<div>
+			<label>Rechercher un nom ou un prénom qui commence par :</label>
+			<input type="text">
+			<span>
+			<input type ="submit" value="Rechercher">
+		</span>
+		<span>
+			<input type="checkbox" name="check" value = "Voir les collaborateurs désactivés">
+			<label for="check">Voir les collaborateurs désactivés</label>
+		</span>
+		</div>
+		
+		<div>
+			<label>Filtrer par département :</label>
+			<select>
+				<Option> Comptabilité
+				<Option> Ressources Humaines
+				<Option> Informatique
+			</select>
+		</div>
 		<ul>
 		<%
-		List<String> listeNoms =(List<String>)request.getAttribute("listeNoms");
-		for(String nom : listeNoms) {
+		List<Collaborateur> listeCollab = (List<Collaborateur>)request.getAttribute("listeCollab");
+		for(Collaborateur c : listeCollab) {
 		%>
-		<li><%=nom %></li>
+		<img src="../assets/images/avatar.jpg">
+		<li><%=c.getNom() %></li>
+		<li><%=c.getPrenom() %></li>
+		<li><%=c.getDateNaissance() %></li>
+		<li><%=c.getAdresse() %></li>
+		<li><%=c.getEmailPro() %></li>
+		<li><%=c.getNumSecuSocial() %></li>
+		<li><%=c.getMatricule() %></li>
+		<li><%=c.getCreation() %></li>
 		<%
 		}
 		%>
